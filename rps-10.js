@@ -1,23 +1,12 @@
-﻿var rpsDebug = {}; // for debug
-//  mode, jsonLocal
-rpsDebug.jsonLocal = false;
-
-var rpsFunc = {};
-// ToggleMsg, debugWrite, debugWriteIf, fatchLabel, initBoard, initVar, main01
-// spanRGB
+﻿var rpsFunc = {};
 var rpsOpt = {};
-// LocateBoard, LocateLabels
 rpsOpt.blogRoot = '';
 
 var rpsDisp = {};
-// ListHead, ListLine, Loading, Rank
 
 var rps$ = {};
-// msg, Board, mainList
 var rpsLabels = {};
-// postLabelNum, loadLabelNum
 var rpsBlog = {};
-// postUrl
 
 var rpsFeeds = {};
 rpsFeeds.PostsNum = 0;
@@ -28,16 +17,6 @@ rpsFeeds.Urls = [];
 rpsFeeds.Dates = [];
 rpsFeeds.idx = [];
 rpsFeeds.idxNum = 0;
-
-rpsFunc.debugWrite = function(a) {
-  rps$.msg.append('<li>' + a + '</li>');
-};
-
-rpsFunc.debugWriteIf = function(cond, a) {
-  if (rpsDebug.mode.search(cond)>=0) {
-    rps$.msg.append('<li>' + a + '</li>');
-  }
-};
 
 rpsFunc.page = function (a) {
   rpsFeeds.Next = rpsFeeds.Lines * (a-1);
@@ -86,9 +65,6 @@ function spanRGB(myP, PRGB) {
   return('<span>');
 };
 
-//  var myQ = Math.floor(100*Math.random());		// for debug only
-//  var myQQ = spanRGB(myQ, optionRGB);		// for debug only
-
   function DispReplace(a) {
   var aa = a;
   do {
@@ -105,8 +81,6 @@ function spanRGB(myP, PRGB) {
   }
 
   if (rpsFeeds.Titles.length > 0) {
-//  	u_idxFrom = 0;
-//  	u_idxTo = 10;
 
   rpsFeeds.This = rpsFeeds.Next;
 
@@ -120,14 +94,12 @@ function spanRGB(myP, PRGB) {
 
 
     myHeadmsg = DispReplace(rpsDisp.ListHead);
-//    rps$.Board.find('#headmsg').text('').append(myQQ + myHeadmsg + '</span>'); // for debug
-    rps$.Board.find('#headmsg').text('').append(myHeadmsg); // for debug
+    rps$.Board.find('#headmsg').text('').append(myHeadmsg);
     rps$.Board.find('#progress').text('');
     rps$.mainList.html('<ul>');		// mainList renew
 
     for (j=u_idxFrom; j<rpsFeeds.idxNum && j<u_idxTo; j++) {
       r = rpsFeeds.idx[j];
-//rpsFunc.debugWrite('[j,r] = '+j+' , '+r);
       
       myP = Math.floor(100*rpsFeeds.Ranks[r]/rpsLabels.loadLabelNum);
       myRGB = spanRGB(myP, optionRGB);
@@ -145,7 +117,6 @@ var temp;
 
 	temp = '上一頁';
 	if (pThis>1) {
-//		temp = '<a id="prev" href="javascript:void(0);" onclick="javascript:rpsFunc.page(' +
 		temp = '<a id="prev" href="javascript:rpsFunc.page(' +
 		(pThis-1) + ');">' + temp + '</a>';
   	}
@@ -171,23 +142,12 @@ var temp;
       }
 	  navi$.append(temp);
 	}
-
-//    navi$.append('下一頁' + '&nbsp;');
-
   }
 };
 
-// 0717, 或許改用 setInterval() 檢查, http://www.swingingbird.com/josephj/Study/SetTimeout/index.html
 rpsFunc.readOK = function() {
   var pp = Math.floor(90 * rpsLabels.loadLabelNum / rpsLabels.postLabelNum);
-// rpsFunc.debugWriteIf('/%jsok%/i', 'END callback : ' + a + ' / ' + rpsFeeds.PostsNum);
-rpsFunc.debugWriteIf(/%jsok%/i, 'END callback : ' + ' / ' + rpsFeeds.PostsNum);
-// rpsFunc.debugWriteIf(/%jsok%/i, '( ' + pp + '% )');
-if (rpsDebug.mode.search(/%jsok-full%/i)>=0) {
-    for (var j=0; j < rpsFeeds.PostsNum; j++) {
-    rpsFunc.debugWrite(rpsFeeds.Dates[j] + ' / ' + rpsFeeds.Titles[j] + ' [' + rpsFeeds.Urls[j] + ']');
-  }
-}
+
   rps$.Board.find('#progress').text('( ' + pp + '% )');
   if (rpsLabels.loadLabelNum == rpsLabels.postLabelNum) {
     rps$.Board.find('#headmsg').text('');
@@ -201,8 +161,6 @@ rpsFeeds.Next = 0;
 };
 
 rpsFunc.readFeed = function(json) {
-	
-//	document.write(1);
 	
 var regex1=/</g, regex2=/>/g;
 var i, j;
@@ -237,7 +195,7 @@ var i, j;
       rpsFeeds.PostsNum++;
     } // endif
   } // next i
-if (!rpsDebug.jsonLocal) rpsFunc.readOK();
+  rpsFunc.readOK();
 };
 
 function SortRelatedPosts() {
@@ -264,35 +222,26 @@ rpsFunc.fatchLabel = function() {
   }
   for (i=1; i<rpsOpt.LocateLabels.length; i++) {
   	if (postLabel$.length > 0) {
-rpsFunc.debugWriteIf(/%label%/i, '[' + rpsOpt.LocateLabels[i] + ']');
   	  postLabel$ = postLabel$.find(rpsOpt.LocateLabels[i]);
     }
   }
 
   if (postLabel$.length == 0) {
-rpsFunc.debugWriteIf(/%label%/i, '[ another try with default ]');
     postLabel$ = jQuery('.post-footer').find('.post-labels').find('a');
   }
-
-// if no Labels found ....
 
   rpsLabels.postLabelNum = postLabel$.length;
   rpsLabels.loadLabelNum = 0;
   
-rpsFunc.debugWriteIf(/%label%/i, 'postLabelNum = ' + rpsLabels.postLabelNum);
-
    l = rpsOpt.blogRoot.length;
-//rpsFunc.debugWriteIf(/%label%/i, 'l = ' + l + rpsOpt.blogRoot.charAt(l-1));
   while (l > 0) {
    	if (rpsOpt.blogRoot.charAt(l-1)=='/') {
  	  rpsOpt.blogRoot = rpsOpt.blogRoot.slice(0,l-1);
       l = rpsOpt.blogRoot.length;
-//rpsFunc.debugWriteIf(/%label%/i, 'l = ' + l + rpsOpt.blogRoot.charAt(l-1));
    	} else {
    	  l = 0;
    	}  
   }
-rpsFunc.debugWriteIf(/%label%/i, 'blogRoot = ' + rpsOpt.blogRoot);
 	
   for (i=0; i<rpsLabels.postLabelNum; i++) {
     s1 = postLabel$.eq(i).attr('href');
@@ -307,36 +256,16 @@ rpsFunc.debugWriteIf(/%label%/i, 'blogRoot = ' + rpsOpt.blogRoot);
       	s2 = s2.slice(0,p2);		// s2 : label encoded, e.g. %E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88
       }
 
-rpsFunc.debugWriteIf(/%label%/i, 'this Label = ' + s1);
-
       feedUrl = rpsOpt.blogRoot + rpsOpt.feedSearchLabel + s2 + '?max-results=20&alt=json-in-script&callback=rpsFunc.readFeed';
 
-rpsFunc.debugWriteIf(/%label%/i, 'feedUrl = ' + feedUrl);
-
-// ===== for local test only =====
-if (rpsDebug.jsonLocal) {
-rpsFunc.debugWriteIf(/%label%/i, '[ get json-in-scipt LOCAL = ' +  s1 + ']');
-/*	json_script = document.createElement('script');
-	json_script.src = s1;
-	json_script.type = 'text/javascript';
-    head0.appendChild(json_script);*/
-  jQuery.getScript(s1, rpsFunc.readOK);
-} else {
-// --------------------------------
-rpsFunc.debugWriteIf(/%label%/i, '[ get json-in-scipt REMOTE ]');
 	json_script = document.createElement('script');
 	json_script.src = feedUrl;
 	json_script.type = 'text/javascript';
     head0.appendChild(json_script);
-}      
-	
-rpsFunc.debugWriteIf(/%label%/i, '[ loop next label ]');
     }
   }
-rpsFunc.debugWriteIf(/%label%/i, '[ end fatchLabel ]');
 };
 
-// 0717 OK, expend for more than one object (toggle all on, all off)
 rpsFunc.ToggleMsg = function(a) {
   var aa, toDisp, i;
   if (a.length==1) {
@@ -424,30 +353,18 @@ rps$.Board = '';
   '<span id="progress"> ( 0% ) </span></p></div>' + '<p id="navi"></p>' +
   '<div id="mainList"></div>' );
   rps$.mainList = rps$.Board.find('#mainList');
-
-// ===== DEBUG session BEGIN =====
-  rps$.Board.append('<p><a href="javascript:void(0);" onclick="javascript:rpsFunc.ToggleMsg(rps$.msg);">' + 
-  	'[+/-] show/hide debug message</a></p><ul id="rps-msg" style="display:none"></ul>'); // for debug only
-  rps$.msg = rps$.Board.find('#rps-msg'); // for debug only
-//  rpsFunc.debugWrite('myLocateRef = ' + myLocateRef);
-  rpsFunc.debugWrite('ready BEGIN');
-// ----- DEBUG session END -----
-
+  rps$.Board.append('<br />');
 };
 
 rpsFunc.main01 = function() {
   jQuery(document).ready(function(){
     rpsFunc.initVar();
     rpsFunc.initBoard();
-rpsFunc.debugWriteIf(/%blog%/i, 'debugWriteIf, postUrl = ' + rpsBlog.postUrl);
     rpsFunc.fatchLabel();
-rpsFunc.debugWrite('ready END');
   });
 };
 
-//rpsOpt.PostListLine = '[rpsPostTitle] - [rpsPostDate] ([rpsPostRank])';
 rpsDisp.Rank = '(%PostRankPure%%)';
-// 0715, PostRankPure 用法及顏色語法待改良
 
 rpsDisp.Loading = '相關文章載入中 ...';
 rpsDisp.ListHead = '約有 %PostNum% 篇相關文章，以下是第 %PostNumFrom% 至 %PostNumTo% 篇';
@@ -455,11 +372,8 @@ rpsDisp.ListLine = '<font size=-1>%PostRank%</font> %PostTitle% - <font size=-1>
 
 rpsOpt.urlSearchLabel = '/search/label/';
 rpsOpt.feedSearchLabel = '/feeds/posts/summary/-/';
-//rpsOpt.blogRoot = 'http://eucaly61.blogspot.com/';	// ending "/" is not critical, will handle automatically
 rpsOpt.LocateLabels = ['.post-footer', '.post-labels', 'a'];
 rpsOpt.LocateBoard = ['append', '.post-footer'];
 rpsOpt.Lines = 10;
-
-rpsOpt.test = ['after', '.post-footer', 1, 2];
 
 rpsFunc.main01();

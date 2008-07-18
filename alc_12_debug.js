@@ -350,9 +350,9 @@ if (tagListSetting.cloudConv) {
   var color = RGB((100.0*(fs-tagListSetting.cloudMinFontSize))/(tagListSetting.cloudMaxFontSize-tagListSetting.cloudMinFontSize), tagListSetting.cloudRGB);
 ;;; dbg = dbg + '(Font,' + fs + ',' + color + ')';  
   eA.style.fontSize = fs+'px';
-;;; eA.title = dbg;
+ eA.title = jQuery(this).text() + dbg;
 ;;; /*
-  jQuery('a',this).get(0).title = jQuery(this).text();
+;;;  eA.title = jQuery(this).text();
 ;;; */
   if (color!=='') { 
     eNum.style.color = color;

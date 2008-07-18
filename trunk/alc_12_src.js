@@ -366,7 +366,7 @@ if (tagListSetting.cloudConv) {
 // 最後當然是在 DOM ready 之後才執行囉
 jQuery(document).ready(function()
 {
-;;; tagListSetting.cloudConv = true;
+// ;;; tagListSetting.cloudConv = true;
 
 	if (tagListSetting.labelName == '')
 		tagListSetting.labelName = 'Label1';

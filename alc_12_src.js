@@ -23,12 +23,10 @@ tagListSetting.lineHeight: 設定標籤雲字間的高度，免得字大的時�
 // ===== 080718, added by Eucaly61 for Tag Cloud =====
 /*
 tagListSetting.cloudConv: 將 Blogger 的標籤元素轉為『標籤雲』, 預設 false
-tagListSetting.cloudMinFontSize: 標籤雲 最小字型, 預設 10
-tagListSetting.cloudMaxFontSize: 標籤雲 最大字型, 預設 20
-tagListSetting.cloudMinNumSize: 標籤雲 文章數最小字型, 預設 10
-tagListSetting.cloudMaxNumSize: 標籤雲 文章數最大字型, 預設 15
+tagListSetting.cloudFontSize: 標籤雲 [最小字型,最大字型,文章數最小字型,文章數最大字型]
+預設 [10,20,10,15]
 tagListSetting.cloudShowNum: 標籤雲 文章數是否顯示, 預設 false
-tagListSetting.cloudRGB: 標籤雲顏色, P 須為遞減, 但會自動依比例調整以配合 .cloudMinFontSize 與 .cloudMaxFontSize
+tagListSetting.cloudRGB: 標籤雲顏色, P 須為遞減, 但會自動依比例調整以配合 .cloudFontSize[0 ~ 1]
 預設 [ {P:100, R:208, G:0, B:0}, {P:50, R:255, G:204, B:0}, {P:0, R:0, G:64, B:128} ]
 */
 /* 不確定以下 標籤雲的 style 是否全部是必須的, 暫時先全抄
@@ -58,10 +56,7 @@ autoscroll:false,
 autohideTag:false,
 // ===== 080718, added by Eucaly61 for Tag Cloud =====
 cloudConv: false,
-cloudMinFontSize:10,
-cloudMaxFontSize:20,
-cloudMinNumSize:10,
-cloudMaxNumSize:15,
+cloudFontSize:[10,20,10,15],
 cloudShowNum:false,
 cloudRGB:[ {P: 100, R :208, G: 0, B: 0}, {P: 50, R: 255, G: 204, B: 0}, {P: 0, R: 0, G: 64, B: 128} ],
 // ----- END added code -----
@@ -333,20 +328,25 @@ if (tagListSetting.cloudConv) {
   var eNum = jQuery('a~*',this).get(0);
   var eA = jQuery('a',this).get(0);
   var pNum = Number(jQuery('a~*',this).text().match(/\d+/g).pop());
+  var fs0 = Math.min(tagListSetting.cloudFontSize[0], tagListSetting.cloudFontSize[1]);
+  var fs1 = Math.max(tagListSetting.cloudFontSize[0], tagListSetting.cloudFontSize[1]);
+  fs1 = Math.max(fs0+1,fs1);
+  var fs2 = Math.min(tagListSetting.cloudFontSize[2], tagListSetting.cloudFontSize[3]);
+  var fs3 = Math.max(tagListSetting.cloudFontSize[2], tagListSetting.cloudFontSize[3]);
   if (typeof(pNum)!=='number') { pNum=1; }
-;;; dbg = dbg + '(' + pMin + ',' + pMax + ',' + pNum + ')';  
+;;; dbg = dbg + '(' + pMin + ',' + pMax + ') ' + pNum;  
 //var fs = s(minFontSize,maxFontSize,ts[t]-ta,tz);
   var fs;
   if (!tagListSetting.cloudShowNum) {
     eNum.style.fontSize = 0;
   } else {
-  	fs = s(tagListSetting.cloudMinNumSize,tagListSetting.cloudMaxNumSize,pNum-pMin+1,pMax);
+  	fs = s(fs2,fs3,pNum-pMin+1,pMax);
     eNum.style.fontSize = fs+'px';
-;;; dbg = dbg + '(Num,' + fs + ')';  
+;;; dbg = dbg + ' (Num=' + fs + ')';  
   }
-  fs = s(tagListSetting.cloudMinFontSize,tagListSetting.cloudMaxFontSize,pNum-pMin+1,pMax);
-  var color = RGB((100.0*(fs-tagListSetting.cloudMinFontSize))/(tagListSetting.cloudMaxFontSize-tagListSetting.cloudMinFontSize), tagListSetting.cloudRGB);
-;;; dbg = dbg + '(Font,' + fs + ',' + color + ')';  
+  fs = s(fs0,fs1,pNum-pMin+1,pMax);
+  var color = RGB((100.0*(fs-fs0))/(fs1-fs0), tagListSetting.cloudRGB);
+;;; dbg = dbg + ' (Font=' + fs + ') ' + color;  
   eA.style.fontSize = fs+'px';
 ;;; eA.title = jQuery(this).text() + dbg;
 ;;; /*

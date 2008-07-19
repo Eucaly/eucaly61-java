@@ -266,7 +266,7 @@ tagFunc.fetchcategory = function()
       var v=Math.floor(Math.log(i)*m+a);
     }
     return v
-  }
+  };
   
   function RGB(myP, PRGB) {
   var myR, myG, myB;
@@ -295,8 +295,7 @@ if (tagListSetting.cloudConv) {
   categoryList.find('ul').wrap('<div id="labelCloud"></div>');
   categoryList.find('ul').get(0).className = 'label-cloud';
   categoryList.find('li').each(function(index){
-    var pNum = jQuery('a~*',this).text().match(/(.+)/g).pop();
-    eval('pNum='+pNum+';');
+    var pNum = Number(jQuery('a~*',this).text().match(/\d+/g).pop());
     if (typeof(pNum)==='number') {
       pMax = Math.max(pNum, pMax);
       if (pMin==0) {
@@ -333,8 +332,7 @@ if (tagListSetting.cloudConv) {
 ;;; var dbg = '';
   var eNum = jQuery('a~*',this).get(0);
   var eA = jQuery('a',this).get(0);
-  var pNum = jQuery('a~*',this).text().match(/(.+)/g).pop();
-  eval('pNum='+pNum+';');
+  var pNum = Number(jQuery('a~*',this).text().match(/\d+/g).pop());
   if (typeof(pNum)!=='number') { pNum=1; }
 ;;; dbg = dbg + '(' + pMin + ',' + pMax + ',' + pNum + ')';  
 //var fs = s(minFontSize,maxFontSize,ts[t]-ta,tz);
@@ -350,9 +348,9 @@ if (tagListSetting.cloudConv) {
   var color = RGB((100.0*(fs-tagListSetting.cloudMinFontSize))/(tagListSetting.cloudMaxFontSize-tagListSetting.cloudMinFontSize), tagListSetting.cloudRGB);
 ;;; dbg = dbg + '(Font,' + fs + ',' + color + ')';  
   eA.style.fontSize = fs+'px';
- eA.title = jQuery(this).text() + dbg;
+;;; eA.title = jQuery(this).text() + dbg;
 ;;; /*
-;;;  eA.title = jQuery(this).text();
+  eA.title = jQuery(this).text();
 ;;; */
   if (color!=='') { 
     eNum.style.color = color;

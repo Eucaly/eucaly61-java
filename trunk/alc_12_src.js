@@ -259,12 +259,14 @@ tagFunc.fetchcategory = function()
 // ===== 080718, added by Eucaly61 for Tag Cloud =====
   function s(a,b,i,x){
     if(a>b){
-      var m=(a-b)/Math.log(x),v=a-Math.floor(Math.log(i)*m)
+      var m=(a-b)/Math.log(x);
+      var v=a-Math.floor(Math.log(i)*m);
     } else {
-      var m=(b-a)/Math.log(x),v=Math.floor(Math.log(i)*m+a)
+      var m=(b-a)/Math.log(x);
+      var v=Math.floor(Math.log(i)*m+a);
     }
     return v
-  }
+  };
   
   function RGB(myP, PRGB) {
   var myR, myG, myB;
@@ -293,8 +295,7 @@ if (tagListSetting.cloudConv) {
   categoryList.find('ul').wrap('<div id="labelCloud"></div>');
   categoryList.find('ul').get(0).className = 'label-cloud';
   categoryList.find('li').each(function(index){
-    var pNum = jQuery(this).text().match(/.+/g).pop();
-    eval('pNum='+pNum+';');
+    var pNum = Number(jQuery('a~*',this).text().match(/\d+/g).pop());
     if (typeof(pNum)==='number') {
       pMax = Math.max(pNum, pMax);
       if (pMin==0) {
@@ -316,14 +317,6 @@ if (tagListSetting.cloudConv) {
 		//if (nameFix>0)
 			//categoryName = categoryName.substr(0,nameFix-1);
 
-// ===== 080718, added by Eucaly61 for Tag Cloud =====
-if (tagListSetting.cloudConv) {
-  var pNum = jQuery(this).text().match(/.+/g).pop();
-  eval('pNum='+pNum+';');
-  if (typeof(pNum)!=='number') { pNum=1; }
-}
-// ----- END added code -----
-
 		if (tagListSetting.dropDown)	{
 			dropdownStr += '<option value="'+ categoryName +'"';
 			if (categoryName.match(tagFunc.convertTag(tagListSetting.defaultPost))!=null)
@@ -336,21 +329,32 @@ if (tagListSetting.cloudConv) {
 		
 // ===== 080718, added by Eucaly61 for Tag Cloud =====
 if (tagListSetting.cloudConv) {
+;;; var dbg = '';
+  var eNum = jQuery('a~*',this).get(0);
+  var eA = jQuery('a',this).get(0);
+  var pNum = Number(jQuery('a~*',this).text().match(/\d+/g).pop());
+  if (typeof(pNum)!=='number') { pNum=1; }
+;;; dbg = dbg + '(' + pMin + ',' + pMax + ',' + pNum + ')';  
 //var fs = s(minFontSize,maxFontSize,ts[t]-ta,tz);
   var fs;
   if (!tagListSetting.cloudShowNum) {
-    jQuery(this).get(0).style.fontSize = 0;
+    eNum.style.fontSize = 0;
   } else {
   	fs = s(tagListSetting.cloudMinNumSize,tagListSetting.cloudMaxNumSize,pNum-pMin+1,pMax);
-    jQuery(this).get(0).style.fontSize = fs+'px';
+    eNum.style.fontSize = fs+'px';
+;;; dbg = dbg + '(Num,' + fs + ')';  
   }
   fs = s(tagListSetting.cloudMinFontSize,tagListSetting.cloudMaxFontSize,pNum-pMin+1,pMax);
   var color = RGB((100.0*(fs-tagListSetting.cloudMinFontSize))/(tagListSetting.cloudMaxFontSize-tagListSetting.cloudMinFontSize), tagListSetting.cloudRGB);
-  jQuery('a',this).get(0).style.fontSize = fs+'px';
-  jQuery('a',this).get(0).title = jQuery(this).text();
+;;; dbg = dbg + '(Font,' + fs + ',' + color + ')';  
+  eA.style.fontSize = fs+'px';
+;;; eA.title = jQuery(this).text() + dbg;
+;;; /*
+  eA.title = jQuery(this).text();
+;;; */
   if (color!=='') { 
-    jQuery(this).get(0).style.color = color;
-    jQuery('a',this).get(0).style.color = color;
+    eNum.style.color = color;
+    eA.style.color = color;
   }
 }
 // ----- END added code -----
@@ -366,7 +370,8 @@ if (tagListSetting.cloudConv) {
 // 最後當然是在 DOM ready 之後才執行囉
 jQuery(document).ready(function()
 {
-// ;;; tagListSetting.cloudConv = true;
+;;; tagListSetting.cloudConv = true;
+;;; tagListSetting.cloudShowNum = true;
 
 	if (tagListSetting.labelName == '')
 		tagListSetting.labelName = 'Label1';

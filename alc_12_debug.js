@@ -22,7 +22,7 @@ tagListSetting.lineHeight: 設定標籤雲字間的高度，免得字大的時�
 
 // ===== 080719, added by Eucaly61 for Tag Cloud =====
 /*
-tagListSetting.cloudConv: 將 Blogger 的標籤元素轉為『標籤雲』, 預設 false
+tagListSetting.cloudConv: 將 Blogger 的標籤元素轉為『標籤雲』, 預設 true
 tagListSetting.cloudFontSize: 標籤雲 [最小字型,最大字型,文章數最小字型,文章數最大字型]
 預設 [10,20,10,15]
 tagListSetting.cloudShowNum: 標籤雲 文章數是否顯示, 預設 false

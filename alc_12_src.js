@@ -22,7 +22,7 @@ tagListSetting.lineHeight: 設定標籤雲字間的高度，免得字大的時�
 
 // ===== 080719, added by Eucaly61 for Tag Cloud =====
 /*
-tagListSetting.cloudConv: 將 Blogger 的標籤元素轉為『標籤雲』, 預設 false
+tagListSetting.cloudConv: 將 Blogger 的標籤元素轉為『標籤雲』, 預設 true
 tagListSetting.cloudFontSize: 標籤雲 [最小字型,最大字型,文章數最小字型,文章數最大字型]
 預設 [10,20,10,15]
 tagListSetting.cloudShowNum: 標籤雲 文章數是否顯示, 預設 false
@@ -66,7 +66,7 @@ dropDown:false,
 autoscroll:false,
 autohideTag:false,
 // ===== 080718, added by Eucaly61 for Tag Cloud =====
-cloudConv: false,
+cloudConv: true,
 cloudFontSize:[10,20,10,15],
 cloudShowNum:false,
 cloudRGB:[ {P: 100, R :208, G: 0, B: 0}, {P: 50, R: 255, G: 204, B: 0}, {P: 0, R: 0, G: 64, B: 128} ],
@@ -337,7 +337,7 @@ if (tagListSetting.cloudConv) {
 // ===== 080718, added by Eucaly61 for Tag Cloud =====
 if (tagListSetting.cloudConv) {
 ;;; var dbg = '';
-  var eNum = jQuery('a~*',this).get(0);
+  var eNum = jQuery('a~*',this).get().pop();
   var eTag = jQuery('a',this).get(0);
   var pNum = Number(jQuery('a~*',this).text().match(/\d+/g).pop());
   var fs0 = Math.min(tagListSetting.cloudFontSize[0], tagListSetting.cloudFontSize[1]);
@@ -350,7 +350,7 @@ if (tagListSetting.cloudConv) {
 //var fs = s(minFontSize,maxFontSize,ts[t]-ta,tz);
   var fs;
   if (!tagListSetting.cloudShowNum) {
-    eNum.style.fontSize = 0;
+    eNum.style.display = 'none';
   } else {
   	fs = s(fs2,fs3,pNum-pMin+1,pMax);
     eNum.style.fontSize = fs+'px';
@@ -382,9 +382,6 @@ if (tagListSetting.cloudConv) {
 // 最後當然是在 DOM ready 之後才執行囉
 jQuery(document).ready(function()
 {
-;;; tagListSetting.cloudConv = true;
-;;; tagListSetting.cloudShowNum = true;
-
 	if (tagListSetting.labelName == '')
 		tagListSetting.labelName = 'Label1';
 		

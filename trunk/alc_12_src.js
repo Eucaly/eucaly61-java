@@ -20,16 +20,27 @@ tagListSetting.tagsShow: 是否預設顯示標籤雲
 tagListSetting.lineHeight: 設定標籤雲字間的高度，免得字大的時候疊在一起
 */
 
-// ===== 080718, added by Eucaly61 for Tag Cloud =====
+// ===== 080719, added by Eucaly61 for Tag Cloud =====
 /*
 tagListSetting.cloudConv: 將 Blogger 的標籤元素轉為『標籤雲』, 預設 false
 tagListSetting.cloudFontSize: 標籤雲 [最小字型,最大字型,文章數最小字型,文章數最大字型]
 預設 [10,20,10,15]
 tagListSetting.cloudShowNum: 標籤雲 文章數是否顯示, 預設 false
-tagListSetting.cloudRGB: 標籤雲顏色, P 須為遞減, 但會自動依比例調整以配合 .cloudFontSize[0 ~ 1]
+tagListSetting.cloudRGB: 標籤雲顏色, P 須從 100 遞減到 0, ( 程式會配合 .cloudFontSize[0 ~ 1] 依比例調整 )
 預設 [ {P:100, R:208, G:0, B:0}, {P:50, R:255, G:204, B:0}, {P:0, R:0, G:64, B:128} ]
 */
-/* 不確定以下 標籤雲的 style 是否全部是必須的, 暫時先全抄
+/* 不確定以下 標籤雲的 style 是否全部是必須的, ()
+// Eucaly61 的版本 20080719
+#headerBlock {margin:0 0 5px 0;padding:0 0 5px 0;border-bottom:1px dotted;}
+#labelCloud {text-align:center;font-family:arial,sans-serif;}
+#labelCloud .label-cloud li{display:inline;background-image:none !important;padding:0 1px;margin:0;vertical-align:baseline !important;border:0 !important;}
+#labelCloud ul{list-style-type:none;margin:0 0 0 -2px;padding:0 0 0 0;}
+#labelCloud a img{border:0;margin:0 0 0 0;padding:0 0 0 0;}
+#labelCloud a{text-decoration:none}
+#labelCloud a:hover{text-decoration:underline}
+#labelCloud li a{}
+#labelCloud .label-cloud {}
+// 黑輪的版本 http://allen.ewebmaster.com.tw/2007/04/blogspot.html
 #labelCloud {text-align:center;font-family:arial,sans-serif;}
 #labelCloud .label-cloud li{display:inline;background-image:none !important;padding:0 5px;margin:0;vertical-align:baseline !important;border:0 !important;}
 #labelCloud ul{list-style-type:none;margin:0 auto;padding:0;}
@@ -247,17 +258,19 @@ tagFunc.nextPage = function(direction, tag)
 tagFunc.fetchcategory = function()
 {
 	var categoryList = jQuery('#'+tagListSetting.labelName);
-	var dropdownStr = '<option value=>' + tagListSetting.messagesArr[0] + '</option>';
+	var dropdownStr = '<option value=""';
+	if (tagListSetting.defaultPost == '')
+		dropdownStr += ' selected';
+	dropdownStr += '>' + tagListSetting.messagesArr[0] + '</option>';
 	categoryList.find('ul').after('<div id="postsList"></div>');
 	tagListinner.blogName = categoryList.find('li a:eq(0)').attr('href').replace(/http:\/\/(.+)\/search\/label.+$/,'$1');
 
 // ===== 080718, added by Eucaly61 for Tag Cloud =====
   function s(a,b,i,x){
+    var m=Math.abs(a-b)/Math.log(x);
     if(a>b){
-      var m=(a-b)/Math.log(x);
       var v=a-Math.floor(Math.log(i)*m);
     } else {
-      var m=(b-a)/Math.log(x);
       var v=Math.floor(Math.log(i)*m+a);
     }
     return v
@@ -311,10 +324,9 @@ if (tagListSetting.cloudConv) {
 		//(Is this problem still exist?? It may be fixed due to the fix I did on 12/16, I will remove it for a while)
 		//if (nameFix>0)
 			//categoryName = categoryName.substr(0,nameFix-1);
-
 		if (tagListSetting.dropDown)	{
 			dropdownStr += '<option value="'+ categoryName +'"';
-			if (categoryName.match(tagFunc.convertTag(tagListSetting.defaultPost))!=null)
+			if (categoryName.match(tagFunc.convertTag(tagListSetting.defaultPost))!=null && tagListSetting.defaultPost != '')
 				dropdownStr += ' selected';
 			// fix loading error 07/16/2008
 			dropdownStr +=  '>'+ jQuery(this).text().replace(/^\s*(\S.+\))/,'$1') + '</option>';
@@ -326,7 +338,7 @@ if (tagListSetting.cloudConv) {
 if (tagListSetting.cloudConv) {
 ;;; var dbg = '';
   var eNum = jQuery('a~*',this).get(0);
-  var eA = jQuery('a',this).get(0);
+  var eTag = jQuery('a',this).get(0);
   var pNum = Number(jQuery('a~*',this).text().match(/\d+/g).pop());
   var fs0 = Math.min(tagListSetting.cloudFontSize[0], tagListSetting.cloudFontSize[1]);
   var fs1 = Math.max(tagListSetting.cloudFontSize[0], tagListSetting.cloudFontSize[1]);
@@ -347,14 +359,14 @@ if (tagListSetting.cloudConv) {
   fs = s(fs0,fs1,pNum-pMin+1,pMax);
   var color = RGB((100.0*(fs-fs0))/(fs1-fs0), tagListSetting.cloudRGB);
 ;;; dbg = dbg + ' (Font=' + fs + ') ' + color;  
-  eA.style.fontSize = fs+'px';
-;;; eA.title = jQuery(this).text() + dbg;
+  eTag.style.fontSize = fs+'px';
+;;; eTag.title = jQuery(this).text() + dbg;
 ;;; /*
-  eA.title = jQuery(this).text();
+  eTag.title = jQuery(this).text();
 ;;; */
   if (color!=='') { 
     eNum.style.color = color;
-    eA.style.color = color;
+    eTag.style.color = color;
   }
 }
 // ----- END added code -----

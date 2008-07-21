@@ -337,7 +337,7 @@ if (tagListSetting.cloudConv) {
 // ===== 080718, added by Eucaly61 for Tag Cloud =====
 if (tagListSetting.cloudConv) {
 ;;; var dbg = '';
-  var eNum = jQuery('a~*',this).get(0);
+  var eNum = jQuery('a~*',this).get().pop();
   var eTag = jQuery('a',this).get(0);
   var pNum = Number(jQuery('a~*',this).text().match(/\d+/g).pop());
   var fs0 = Math.min(tagListSetting.cloudFontSize[0], tagListSetting.cloudFontSize[1]);
@@ -350,7 +350,7 @@ if (tagListSetting.cloudConv) {
 //var fs = s(minFontSize,maxFontSize,ts[t]-ta,tz);
   var fs;
   if (!tagListSetting.cloudShowNum) {
-    eNum.style.fontSize = 0;
+    eNum.style.display = 'none';
   } else {
   	fs = s(fs2,fs3,pNum-pMin+1,pMax);
     eNum.style.fontSize = fs+'px';

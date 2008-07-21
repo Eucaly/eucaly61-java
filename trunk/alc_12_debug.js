@@ -66,7 +66,7 @@ dropDown:false,
 autoscroll:false,
 autohideTag:false,
 // ===== 080718, added by Eucaly61 for Tag Cloud =====
-cloudConv: false,
+cloudConv: true,
 cloudFontSize:[10,20,10,15],
 cloudShowNum:false,
 cloudRGB:[ {P: 100, R :208, G: 0, B: 0}, {P: 50, R: 255, G: 204, B: 0}, {P: 0, R: 0, G: 64, B: 128} ],
@@ -382,9 +382,6 @@ if (tagListSetting.cloudConv) {
 // 最後當然是在 DOM ready 之後才執行囉
 jQuery(document).ready(function()
 {
-;;; tagListSetting.cloudConv = true;
-;;; tagListSetting.cloudShowNum = true;
-
 	if (tagListSetting.labelName == '')
 		tagListSetting.labelName = 'Label1';
 		

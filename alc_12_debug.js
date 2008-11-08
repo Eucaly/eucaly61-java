@@ -109,9 +109,10 @@ tagFunc.addHeaderButton = function ()
 
 tagFunc.Util =function(json)
 {
-	var posts = json.feed.entry;
+	//var posts = json.feed.entry;
 	var tagPostNum = json.feed.openSearch$totalResults.$t;
 	var categoryList = jQuery('#'+tagListSetting.labelName);
+	var titleLinkIdx = 0;
 	if (tagPostNum != 0)
 	{
 		var temp = '<ul>';
@@ -122,8 +123,12 @@ tagFunc.Util =function(json)
 		for (var i=0; i < looping ; i++) 
 		{
 			post = json.feed.entry[i];
+			var j = 0;
+			while (j < post.link.length && post.link[j].rel!='alternate' ) // we search for the link we want
+				j++;
+			titleLinkIdx = j;
 			var title=post.title.$t;
-			var link=post.link[0].href;
+			var link=post.link[titleLinkIdx].href;
 			// 未來應加入預視窗格
 			var timestamp=post.published.$t.substr(0,10);
 			temp += '<li><a href="'+ link +'">'+ title +'</a> '+ timestamp +'</li>';

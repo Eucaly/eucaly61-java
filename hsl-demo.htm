@@ -1,0 +1,51 @@
+﻿<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>HSL 測試</title>
+
+<!--
+HSL_001 initial version for demo HSL
+-->
+	<!--script type="text/javascript" src="wz_jsgraphics.js"></script-->
+	<script type="text/javascript" src="http://eucaly61-java.googlecode.com/files/wz_jsgraphics.js"></script>
+	<script type="text/javascript" src="hsl-demo.js"></script>
+  </head>
+  <body>
+  <h2>HSL 測試</h2>
+  <p>by Eucaly61 (2009-04) ---- 更多說明</p>
+  <table border=1><tr align="center">
+<td><div id="Canvas0" style="position:relative;height:200px;width:240px;"> </div>0: 傳統運算方式,</td>
+<td><div id="Canvas1" style="position:relative;height:200px;width:240px;"> </div>1: HSL不跨過0度 <!--HSL中間色『綠色』--></td>
+<td><div id="Canvas2" style="position:relative;height:200px;width:240px;"> </div>2: HSL 經過0度 (紅/紫色) <!--HSL中間色『紫色』--></td>
+</tr>
+<br/>
+<tr><td colspan=3>
+<br/>
+<table align="center">
+    <tr align="center">
+<td id="myColor0">minColor</td>
+<td id="myColor1">maxColor</td>
+</tr>
+<tr>
+  <td width=150>
+<form name=minColor>
+R = <input type="text" id="myColor00" name="R0" value="" size=10 maxlength=3 onChange="HSL01.colorChange(0,0)"> </br>
+G = <input type="text" id="myColor01" name="G0" value="" size=10 maxlength=3 onChange="HSL01.colorChange(0,1)"> </br>
+B = <input type="text" id="myColor02" name="B0" value="" size=10 maxlength=3 onChange="HSL01.colorChange(0,2)">
+</form>
+</td>
+<td width=150>
+<form name=maxColor>
+R = <input type="text" id="myColor10" name="R1" value="" size=10 maxlength=3 onChange="HSL01.colorChange(1,0)"> </br>
+G = <input type="text" id="myColor11" name="G1" value="" size=10 maxlength=3  onChange="HSL01.colorChange(1,1)"> </br>
+B = <input type="text" id="myColor12" name="B1" value="" size=10 maxlength=3  onChange="HSL01.colorChange(1,2)">
+</form>
+</td>
+<td>
+<input type="button" id="ReDraw" name="ReDraw" value="ReDraw" onClick="HSL01.drawColor()" >
+</td>
+</tr></table>
+</td></tr>
+</table>
+  </body>
+</html>

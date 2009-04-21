@@ -3,16 +3,16 @@
 	0: 傳統運算方式, 1: HSL中間色『綠色』, 2: HSL中間色『紫色』
 */
 
-var HSL01 = {
+var HSL01 = { };
 //minColor: [8, 8, 138],	// Color setting
 //maxColor: [223, 116, 4],  // Color setting
-minColor: [0, 64, 128],	 // Color setting
+HSL01.minColor = [0, 64, 128];	 // Color setting
 //minColor: [0, 1, 2],  // Color setting
-maxColor: [208, 0, 0],  // Color setting
+HSL01.maxColor = [208, 0, 0];  // Color setting
 //minColor: [128, 0, 128],  // Color setting
 //minColor: [255, 0, 255],  // Color setting
 //maxColor: [254, 0, 255],  // Color setting
-};
+//}, a;
 
 HSL01.main01 = function() {
 	

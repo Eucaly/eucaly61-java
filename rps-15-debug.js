@@ -207,26 +207,25 @@ var redrawBoard = function () {
 				case b: h = (r - g) / d + 4; break;
 			}
 			h *= (h_scale / 6);
-		}
+		};
 		return [h, d, max];
 	}
 
 //convert rgb to hsl (all values 0..255, except hue 0..359)  ====> by Eucaly61 2009-04
 	function H2rgb(hsv){
-		var h = hsv[0], s = hsv[1], v = hsv[2]
-			rgb=[];
+		var h = hsv[0], s = hsv[1], v = hsv[2],	rgb=[];
 
 		if (s==0) {
 			rgb = [v, v, v]; // achromatic
 		} else {
 			function hue2rgb(p, q, t) {
-				while (t < 0) t += 1;
-				while (t > 1) t -= 1;
+				while (t < 0) {t += 1};
+				while (t > 1) {t -= 1};
 				if(t < 1/6) return p + (q - p) * 6 * t;
 				if(t < 1/2) return q;
 				if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
 				return p;
-			};
+			}
 
 			var h1 = h/h_scale;
 			for (var i=0; i<3; i++) {
@@ -247,16 +246,16 @@ var redrawBoard = function () {
 //ss = rpsArray_Summary[r];
 			aa = aa.replace(/%PostSummary%/gi, rpsArray_Summary[r]);
 			aa = aa.replace(/%PostRankPure%/gi, myP + '' );
-			if (rpsBlog_postUrl.indexOf(rpsArray_Urls[r])>=0)
-				aa = aa.replace(/%PostRank%/gi, '本篇' )
-			else
+			if (rpsBlog_postUrl.indexOf(rpsArray_Urls[r])>=0) 
+				aa = aa.replace(/%PostRank%/gi, '本篇' );
+			else 
  				aa = aa.replace(/%PostRank%/gi, myPostRank);
 			aa = aa.replace(/%PostNum%/gi, rpsArray_idxNum + '' );
 			aa = aa.replace(/%PostNumFrom%/gi, (u_idxFrom+1) + '' );
 			aa = aa.replace(/%PostNumTo%/gi, u_idxTo + '' );
 		} while (a0 != aa);
 		return aa;
-	}
+	};
 
 	if (!(rpsArray_Titles.length > 0)) 
 		return;
@@ -270,7 +269,7 @@ var redrawBoard = function () {
 
 	rTags = '';
 	for (var tagName in rpsFeeds_relatedTag) {
-		if (rTags != '') {rTags += ', '}
+		if (rTags != '') {rTags += ', '};
 		rTags += tagName + ' (' + rpsFeeds_relatedTag[tagName] + ')';
 	}
 	rTags = '<br/>' + '<font size=-2 color="#008000"> 相關標籤 : ' + rTags + '</font>';
@@ -298,7 +297,7 @@ var redrawBoard = function () {
 		r = rpsArray_idx[j];
 //;;; debugWrite('[j,r] = '+j+' , '+r);
 		
-		myP = Math.round(100 * rpsArray_Weight[r] / rpsFeeds_totalWeight) 
+		myP = Math.round(100 * rpsArray_Weight[r] / rpsFeeds_totalWeight);
 		if (rpsOpt.colorMode < 0.5) {
 			newRGB = interPn(myP/100, minColor, maxColor);
 		} else {
@@ -360,7 +359,7 @@ var addWeight = function (tagName, entryURL, j, tagWeight) {
 		rpsArray_tag2postUrl[tagName][entryURL] = j;
 		rpsArray_Weight[j] += tagWeight;
 	}
-}
+};
 
 // 0717, 或許改用 setInterval() 檢查, http://www.swingingbird.com/josephj/Study/SetTimeout/index.html
 var procReadOK = function() {
@@ -369,7 +368,7 @@ var procReadOK = function() {
 	if (rpsLabels_postLabelNum == 0) {
 		g_Board_q.find('#mainList').get(0).innerHTML = '沒有標籤';
 		return;
-	}
+	};
 
 	var pp = Math.floor(90 * rpsLabels_loadLabelNum / rpsLabels_postLabelNum);
 
@@ -416,7 +415,7 @@ rpsFunc.readFeed = function(json) {
 			}
 		}
 		return '';
-	}
+	};
 	
 	var regex_lt=/</g;
 	var regex_gt=/>/g;
@@ -643,7 +642,7 @@ var initBoard = function() {
 
 	for (var i=i0; i<rpsOpt.LocateBoard.length; i++) {
 		if (myLocate_q.length()>0) {
-			s1 = rpsOpt.LocateBoard[i]
+			s1 = rpsOpt.LocateBoard[i];
 			switch (typeof(s1)) {
 			case 'string' :
 				myLocate_q = myLocate_q.find(s1);
@@ -668,10 +667,10 @@ var initBoard = function() {
 			myLocate_dom.insertBefore( newDOM, myLocate_dom.firstChild );
 			break;
 		case p_after :
-			myLocate_dom.parentNode.insertBefore( newDOM, myLocate_dom.nextSibling )
+			myLocate_dom.parentNode.insertBefore( newDOM, myLocate_dom.nextSibling );
 			break;
 		case p_before :
-			myLocate_dom.parentNode.insertBefore( newDOM, myLocate_dom )
+			myLocate_dom.parentNode.insertBefore( newDOM, myLocate_dom );
 			break;
 		default :
 			myLocate_dom.appendChild(newDOM);

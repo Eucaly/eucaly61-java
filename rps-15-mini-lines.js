@@ -104,7 +104,7 @@ break}
 h*=(C/6)}
 return[h,d,max]}
 function H2rgb(a){
-var h=a[0],s=a[1],v=a[2]rgb=[];
+var h=a[0],s=a[1],v=a[2],rgb=[];
 if(s==0){
 rgb=[v,v,v]}
 else{

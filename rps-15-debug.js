@@ -246,7 +246,10 @@ var redrawBoard = function () {
 //debugger;
 //ss = rpsArray_Summary[r];
 			aa = aa.replace(/%PostSummary%/gi, rpsArray_Summary[r]);
-			aa = aa.replace(/%PostRankPure%/gi, myP + '' );
+			if (rpsArray_Urls[r]==rpsBlog_postUrl)
+				aa = aa.replace(/%PostRankPure%/gi, '本篇' )
+			else
+				aa = aa.replace(/%PostRankPure%/gi, myP + '' );
 			aa = aa.replace(/%PostRank%/gi, myPostRank);
 			aa = aa.replace(/%PostNum%/gi, rpsArray_idxNum + '' );
 			aa = aa.replace(/%PostNumFrom%/gi, (u_idxFrom+1) + '' );

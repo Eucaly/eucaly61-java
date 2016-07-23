@@ -1,0 +1,214 @@
+﻿/* Overload Structure*/
+
+.title	{
+text-align:center;
+color: #937653;
+border: solid 3px grey;
+width:850px;
+margin:auto;
+}
+#container { 
+	width:850px;
+}
+a:link{
+color:blue;
+}
+a:hover{
+text-decoration: underline;
+background-color: #ffffff;
+border: none;
+}
+li {
+	margin:0;	
+}
+td {
+	padding:0;
+}
+
+/* Basic structure*/
+#outer {
+	text-align:center; /* This is align center for IE*/
+	margin:auto; /* This is align center for FF*/
+}
+#outer2{
+	text-align:center; /* This is align center for IE*/
+	margin:auto; /* This is align center for FF*/
+	width:800px;
+}
+
+#main {
+	float:left;
+	text-align:center;
+	width:400px; /* This must be higher than what you want to set. ex: if you need total 720px, you should give 740px for better result (especially in FF )*/
+	margin:20px auto;	
+}
+
+#sidebar{
+	
+	text-align:center;
+	width:350px;
+	margin:20px auto;	
+	word-wrap: break-word;
+}
+
+/*  For main*/
+#mainText {
+	position:relative;
+	margin:10px auto;
+	text-align:center;
+}
+
+#titleText{
+	text-align:center;
+	margin:auto;
+}
+
+.titleUp{
+text-align:center;
+font-weight:bold;
+margin:10px 10px 0 10px ;
+border:5px outset #888888;
+cursor:pointer;
+}
+
+.titleDown{
+text-align:center;
+font-weight:bold;
+margin:10px 10px 0 10px ;
+border:5px inset #BBBBBB;
+}
+
+table{
+border-collapse: collapse;
+margin:auto;
+width:400px;
+border-style:none;
+margin-top:10px;
+margin-top:20px;
+margin-top:30px;
+}
+
+table .tableleft{
+width:150px;
+text-align: right;
+vertical-align: baseline;
+padding:1px 0 1px 1px;
+}
+
+table .tableright{
+text-align: left;
+vertical-align: baseline;
+padding:0px 1px 1px 1px;
+}
+
+table textarea{
+width:180px;
+height:100px;
+word-wrap: break-word;
+text-align:left;
+margin:auto;
+}
+
+#floatText{
+	float:none;
+	display:none;
+	position:relative;
+	margin:10px auto;
+	width:216px;
+	height:auto;
+	text-align:left;
+	border:1px dotted;
+	padding:5px; 
+	word-wrap: break-word;
+	
+}
+
+#dialogA{
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:100;
+	margin:auto;
+	text-align:center;
+	display:none;
+}
+#showCode {
+	border:3px outset #ddaacc;
+	background-color: #FFFFFF;
+	layer-background-color: #FFFFFF;
+	width:500px;
+	height:500px;
+	display:none;
+	position:relative;
+	top:90px;
+	z-index:101;
+	margin:auto;
+	text-align:left;
+}
+
+
+#dialog0{
+	filter:alpha(opacity=30); /* for IE */
+	opacity:0.1; /* CSS3 standard */
+	-moz-opacity:0.1;  /* for Mozilla, Firefox */
+	background-color: #000;
+	layer-background-color: #000;
+	width:100%;
+	height:100%;
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:1;
+	border:   1px   none   #000000;	  
+	margin:auto;
+	text-align:center;
+	display:none;
+}
+/*  For sidebar*/
+
+#previewEasy{
+	position:relative;
+	float:none;
+	clear:both; /* In FF, the container will display incorrectly without it */
+	text-align: left;
+	width     : 330px;
+	border    : 10px blue groove; 
+	margin	  : 10px auto;
+	padding   : 5px;
+	word-wrap: break-word;
+}
+
+#previewCode{
+	display:none;
+	position:relative;
+	float:none;
+	clear:both; /* In FF, the container will display incorrectly without it */
+	text-align: left;
+	width     : 330px;
+	height    : 300px;
+	margin	  : 10px auto;
+	padding   : 5px;
+	word-wrap: break-word;
+	/*border:3px outset #ddaacc;*/
+}
+#previewCode textarea{
+	width:100%;
+	height:100%;
+}
+
+#color1 {
+ border:solid 1px;
+ display:inline;
+ background:rgb(8, 8, 138);
+}
+
+#color2 {
+	border:solid 1px;
+	display:inline;
+	background:rgb(223, 116, 4);
+}
+#colorBar{
+	display:inline;
+}

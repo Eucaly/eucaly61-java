@@ -1,0 +1,582 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-tw"><head><meta content="text/html;charset=UTF-8" http-equiv="Content-Type">
+  	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script type="text/javascript" src="301a.js"></script>
+	<script type="text/javascript" src="RP_install.js"></script>
+	<link rel="stylesheet" type="text/css" href="rpStyle.css"><title>LVCHEN - Blogger 標籤選台器 2.0</title><meta content="LVCHEN" name="author"><meta content="An installation page for blogger advanced label 2.0" name="description">
+<!-- Beginning of StatCounter Code -->
+<script type="text/javascript">
+sc_project=2853597; 
+sc_invisible=1; 
+sc_partition=29; 
+sc_security="206ff9a3"; 
+</script>
+
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="website statistics"
+href="http://www.statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c30.statcounter.com/2853597/0/206ff9a3/1/"
+alt="website statistics" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!-- Beginning of Google Analytics Code -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1471580-5");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<!-- End of Analytics Code -->
+
+	</head>
+<body>
+<div id="colorpicker301" class="colorpicker301"></div>
+<div style="text-align:center"><div align="center" class="title"><h1>Blogger 標籤選台器 2.0</h1>
+<p style="color:blue"><a href="http://lvchen.blogspot.com" target="_blank">LVCHEN</a> 熱情製作 - 5/8/2009</p>
+
+</div></div>
+<div id="outer">
+		<button onclick="loadScript(); this.style.display='none'; return false;" style="margin-top:1em;color:#9A4494;font-size: 36px;" disabled>啟用標籤選台器</button>
+<div id="outer2">
+	<div id="main" style="display:none">
+	<div id="titleText"><span class="titleDown">基本設定</span><span class="titleUp">自訂版面</span><span class="titleUp">微調樣式</span></div>
+		<div id="mainText">
+			<form id="widgetMaking" name="makeWidget" action="" onsubmit="return false">
+			<table id="table1">
+			<tbody>
+			<tr>
+				<td class="tableleft">每頁文章數：</td>
+				<td class="tableright"><input style="width: 24px;" name="postNum" value="5" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(1); return false;}" onblur="previewEasy(1);" type="text"></td>
+			</tr>
+			<tr>
+			<td class="tableleft">標籤元素名稱：<br><div style="margin: 0pt 1em; padding: 0pt 0pt 0pt 1em; text-align: left; color: red; font-size: 80%;">（通常不需要修改，不懂的話使用預設即可）</div></td>
+			<td class="tableright">Label
+				<select name="labelName" onchange="previewEasy(2);"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select>
+			</td>
+			</tr>
+			<tr>
+			<td class="tableleft">記住上次瀏覽位置：<br><div style="margin: 0pt 1em; padding: 0pt 0pt 0pt 1em; text-align: left; color: red; font-size: 80%;">（讓選台器不會因為瀏覽網頁而回到第一頁）</div></td>
+				<td class="tableright"><input name="cookie" onclick="previewEasy(4);" checked="checked" type="checkbox"></td>
+			</tr>			
+			<tr>
+				<td class="tableleft">預設顯示標籤：<div style="margin: 0pt 1em; padding: 0pt 0pt 0pt 1em; text-align: left; color: red; font-size: 80%;">（修改預設顯示標籤請先輸入部落格網址）</div></td>
+				<td class="tableright">
+				<select id="categories" onchange="previewEasy(3);"><option>&nbsp;</option></select>&nbsp;&nbsp;
+				<button onclick="previewEasy(0);">Get Labels</button><br/><input onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(0); return false;}" id="blogNameInput" style="width: 180px;" name="blogDomain" value="" type="text"></td>
+			</tr>
+			</tbody>
+			</table>
+			<table id="table2" style="display: none;">
+			<tbody>
+			<tr>
+				<td class="tableleft">使用標籤選擇器：</td>
+				<td class="tableright"><input name="headerButton" value="" onclick="previewEasy(5);" checked="checked" type="checkbox"></td>
+			</tr>
+			<tr>
+				<td class="tableleft"><font color="darkblue">使用標籤雲：</font></td>
+				<td class="tableright"><input name="effect" value="" onclick="previewEasy(7)" checked="checked" type="radio"></td>
+			</tr>
+			<tr>
+				<td class="tableleft"><font color="darkred">使用下拉式選單：</font></td>
+				<td class="tableright"><input name="effect" value="" onclick="previewEasy(8)" type="radio"></td>
+			</tr>
+			<tr>
+				<td class="tableleft">顯示文章數量：</td>
+				<td class="tableright"><input name="countDisplay" value="" onclick="previewEasy(10);" checked="checked" type="checkbox"></td>
+			</tr>
+			<tr>			
+			<t>
+				<td style="border-left:2px solid darkblue; border-top:2px solid darkblue;" class="tableleft"><font color="darkblue">啟動時展開標籤雲：</font></td>
+				<td style="border-right:2px solid darkblue; border-top:2px solid darkblue;" class="tableright"><input name="tagShow" onclick="previewEasy(6);" value="" type="checkbox"></td>
+			</tr>			
+			<tr>
+				<td style="border-left:2px solid darkblue;" class="tableleft"><font color="darkblue">標籤雲自動隱藏：</font></td>
+				<td style="border-right:2px solid darkblue;" class="tableright"><input name="autoHide" value="" onclick="previewEasy(9);" checked="checked" type="checkbox"></td>
+			</tr>
+
+				<td style="border-left:2px solid darkblue;" class="tableleft"><font color="darkblue">標籤雲每行間距：</font></td>
+				<td style="border-right:2px solid darkblue;" class="tableright"><input style="width: 2em;" name="lineHeight" value="24" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(11); return false;}" onblur="previewEasy(11);" checked="checked" type="text">px</td>
+			</tr>			
+			<tr>
+				<td style="border-left:2px solid darkblue;" class="tableleft"><font color="darkblue">標籤雲字級範圍：</font></td>
+				<td style="border-right:2px solid darkblue;" class="tableright">
+					<input name="fontSizes" style="width: 2em;" value="10" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(12); return false;}" onblur="previewEasy(12);" type="text">px ～
+					<input name="fontSizel" style="width: 2em;" value="26" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(13); return false;}" onblur="previewEasy(13);" type="text">px
+				</td>
+			</tr>
+			<tr>
+				
+			</tr>
+				<td style="border-left:2px solid darkblue;" class="tableleft"><font color="darkblue">標籤雲顏色系統：</font></td>
+				<td style="border-right:2px solid darkblue;" class="tableright">
+				<select name="colorSystem" onchange="previewEasy(29);"><option value="0">RGB</option><option value="1">HSL（綠）</option><option value="2">HSL（藍）</option></select>
+				</td>
+			<tr>
+				<td style="border-left:2px solid darkblue;border-bottom:2px solid darkblue;" class="tableleft"><font color="darkblue">標籤雲顏色範圍：</font></td>
+				<td style="border-right:2px solid darkblue;border-bottom:2px solid darkblue;" class="tableright">
+				<div id="color1" onclick="showColorGrid3('color1','color1');">&nbsp;&nbsp;&nbsp;&nbsp;</div>&nbsp;&nbsp;<div id="colorBar"> </div>
+				&nbsp;&nbsp;<div id="color2" onclick="showColorGrid3('color2','color2');">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">顯示文章發表日期：</td>
+				<td class="tableright"> 
+					<input name="showDate" value="" onclick="previewEasy(20);" checked="checked" type="checkbox">
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">顯示分頁：</td>
+				<td class="tableright"> 
+					<input name="pageNumber" value="" onclick="previewEasy(26);" checked="checked" type="checkbox">
+				</td>
+			</tr>			
+			<tr>
+				<td class="tableleft">選台器按鈕：</td>
+				<td class="tableright"><input style="width: 180px;" name="headerButton1" value="最新文章" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(14); return false;}" onchange="previewEasy(14);" type="text">
+				<input style="width: 180px;" name="headerButton2" value="選擇標籤" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(15); return false;}" onchange="previewEasy(15);" type="text"></td>
+			</tr>			
+			<tr>
+			<td class="tableleft">「載入中」訊息：</td>
+				<td class="tableright"><input style="width: 180px;" name="loadingMsg" value="&lt;img src=&quot;http://farm4.static.flickr.com/3050/2767795469_09fbcce6fa_o.gif&quot;/&gt;&amp;nbsp;載入中....." onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(16); return false;}" onchange="previewEasy(16);" type="text">
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">換頁按鈕文字：</td>
+				<td class="tableright"><input style="width: 180px;" name="prevPage" value="上一頁" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(17); return false;}" onchange="previewEasy(17);" type="text">
+				<input style="width: 180px;" name="nextPage" value="下一頁" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(18); return false;}" onchange="previewEasy(18);" type="text"></td>
+			</tr>
+			<tr>
+				<td class="tableleft">頁尾資訊：</td>
+				<td class="tableright"><input style="width: 180px;" name="footerMsg" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(19); return false;}" value="%tagName% %range%，共有 %totalNum% 篇文章" onchange="previewEasy(19);" type="text"></td>
+			</tr>
+			<tr>
+				<td class="tableleft">分隔符號：</td>
+				<td class="tableright"><input style="width: 180px;" name="seperator" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(30); return false;}" value="~" onchange="previewEasy(30);" type="text"></td>
+			</tr>
+			<tr>
+			<td class="tableleft">自訂錯誤訊息：</td>
+				<td class="tableright"><input style="width: 180px;" name="nothing" value="&lt;p&gt;一篇文章也沒有耶！&lt;br&gt;會不會是輸入錯誤的標籤啊？&lt;/p&gt;" onkeypress="if(event.keyCode==13||event.which == 13) {previewEasy(21); return false;}" onchange="previewEasy(21);" type="text">
+				</td>
+			</tr>			
+			</tbody>
+			</table>
+			<table id="table3" style="display: none;">
+			<tbody>
+			<tr>
+				<td class="tableleft">啟用 CSS 設定：</td>
+				<td class="tableright"><input name="startCSS" onclick="previewEasy(22);" type="checkbox"></td>
+			</tr>
+			<tr>
+				<td class="tableleft">選台器連結按鈕化：</td>
+				<td class="tableright"><input name="header_a_button" onclick="previewEasy(23);" disabled="disabled" type="checkbox"></td>
+			</tr>
+			<tr><td class="tableleft">選台器連結位置：</td>
+				<td class="tableright">
+				<select name="header_post" onchange="previewEasy(28);" disabled="disabled"><option value="left">靠左</option><option value="center">置中</option><option value="right">靠右</option></select>
+			</td></tr>
+			<tr>
+				<td class="tableleft">標籤雲無底線：</td>
+				<td class="tableright"><input name="tagCloudLine" onclick="previewEasy(24);" disabled="disabled" type="checkbox"></td>
+			</tr>
+			<tr>
+				<td class="tableleft">文章日期右移：</td>
+				<td class="tableright"><input style="width:2em" value="0" name="datePost" onchange="previewEasy(27);" disabled="disabled" type="text">px</td>
+			</tr>
+				<tr><td class="tableleft">頁尾資訊位置：</td>
+				<td class="tableright">
+				<select name="CSS_footer_right" onchange="previewEasy(25);" disabled="disabled"><option value="left">靠左</option><option value="center">置中</option><option value="right">靠右</option></select>
+			</td></tr>
+			<tr>
+				<td colspan="2" align="center">
+				<p style="margin-top:1em;color:brown">樣式設定參考圖
+<pre>/-----------------------------------------\<br>|              <span
+ style="color: rgb(51, 51, 255);">#headerBlock  </span>             |<br>|    |-------------------------------|    |<br>|    | <span
+ style="color: rgb(0, 153, 0);">.buttonStyle </span> |  <span
+ style="color: rgb(0, 153, 0);">.buttonStyle </span>|    |<br>|    |-------------------------------|    |<br>|                                         |<br>|-----------------------------------------|<br>|              <span
+ style="color: rgb(51, 51, 255);">#RP-tagCloud </span>              |<br>|-----------------------------------------|<br>|              <span
+ style="color: rgb(51, 51, 255);">#postsList</span>                 |<br>|    |-------------------------------|    |<br>|    | <span
+ style="color: rgb(204, 51, 204);">li + .RP_date </span>                |    |<br>|    | <span
+ style="color: rgb(204, 51, 204);">li + .RP_date </span>                |    |<br>|    | <span
+ style="color: rgb(204, 51, 204);">li + .RP_date </span>                |    |<br>|    |-------------------------------|    |<br>|-----------------------------------------|<br>|              <span
+ style="color: rgb(51, 51, 255);">#footerInfo</span>                |<br>||---------------------------------------||<br>|| <span
+ style="color: rgb(204, 102, 0);">.footerMsg</span>                            ||<br>|| <span
+ style="color: rgb(153, 156, 113);">.changePage</span> + <span
+ style="color: rgb(204, 102, 0);">.footerMsg</span> + <span
+ style="color: rgb(153, 156, 113);">.changePage</span>||<br>||---------------------------------------||<br>\-----------------------------------------/<br><br></pre>
+			</p>
+			</td></tr>
+			</tbody>
+			</table>
+			</form>
+		</div>
+	</div>
+	<div id="sidebar">
+		<div id="previewEasy">
+
+		<div style="margin-bottom:5px;color:#cda14b;">由於外掛必須作用於部落格中的標籤元素，預覽畫面僅供參考<br/>範例標籤來自&nbsp;<a href="http://lvchen.blogspot.com/" target="_blank">LVCHEN 的美國生活指南</a></div>
+
+			<div class="widget Label" id="Label1">
+			<div class="widget-content">
+			<ul>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/Blog" dir="ltr">
+			Blog
+			</a>
+			<span dir="ltr">(44)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/Blogger" dir="ltr">
+			Blogger
+			</a>
+			<span dir="ltr">(47)</span>
+
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/Blogger%20Hack" dir="ltr">
+			Blogger Hack
+			</a>
+			<span dir="ltr">(30)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/Ethan" dir="ltr">
+			Ethan
+			</a>
+			<span dir="ltr">(1)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/Javascript" dir="ltr">
+
+			Javascript
+			</a>
+			<span dir="ltr">(20)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/VCU%E4%BB%8B%E7%B4%B9" dir="ltr">
+			VCU介紹
+			</a>
+			<span dir="ltr">(14)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/Wii" dir="ltr">
+			Wii
+			</a>
+			<span dir="ltr">(8)</span>
+
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/WLW" dir="ltr">
+			WLW
+			</a>
+			<span dir="ltr">(7)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E3%80%8C%E5%BF%83%E6%83%85%E5%AF%AB%E4%BD%9C%20%E3%80%8D" dir="ltr">
+			「心情寫作 」
+			</a>
+			<span dir="ltr">(183)</span>
+			</li>
+			<li>
+
+			<a href="http://lvchen.blogspot.com/search/label/%E3%80%8C%E6%88%91%E7%9A%84%E9%9B%BB%E8%85%A6%E5%B8%B8%E8%AD%98%20%E3%80%8D" dir="ltr">
+			「我的電腦常識 」
+			</a>
+			<span dir="ltr">(59)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E3%80%8C%E6%9C%89%E8%B6%A3%E8%BD%89%E8%B2%BC%20%E3%80%8D" dir="ltr">
+			「有趣轉貼 」
+			</a>
+			<span dir="ltr">(70)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E3%80%8C%E7%BE%8E%E5%9C%8B%E7%95%99%E5%AD%B8%E7%94%9F%E6%B4%BB%E3%80%8D" dir="ltr">
+
+			「美國留學生活」
+			</a>
+			<span dir="ltr">(143)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E5%81%9A%E9%BA%B5%E5%8C%85" dir="ltr">
+			做麵包
+			</a>
+			<span dir="ltr">(3)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E5%86%AC%E6%97%A5%E7%B3%BB%E5%88%97" dir="ltr">
+			冬日系列
+			</a>
+
+			<span dir="ltr">(8)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E5%8F%AA%E6%83%B3%E5%A4%A7%E8%81%B2%E7%9A%84%E5%98%B6%E5%90%BC" dir="ltr">
+			只想大聲的嘶吼
+			</a>
+			<span dir="ltr">(56)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E5%9C%A8%E7%BE%8E%E5%9C%8B%E9%81%8E%E7%AF%80" dir="ltr">
+			在美國過節
+			</a>
+			<span dir="ltr">(16)</span>
+			</li>
+
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E5%A5%BD%E5%A5%BD%E5%90%83%E7%B3%BB%E5%88%97" dir="ltr">
+			好好吃系列
+			</a>
+			<span dir="ltr">(16)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E5%AD%B8%E6%A0%A1" dir="ltr">
+			學校
+			</a>
+			<span dir="ltr">(30)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E5%AE%B6%E5%B1%85%E7%94%9F%E6%B4%BB" dir="ltr">
+			家居生活
+
+			</a>
+			<span dir="ltr">(15)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E5%AF%AB%E4%B8%80%E9%A6%96%E8%A9%A9" dir="ltr">
+			寫一首詩
+			</a>
+			<span dir="ltr">(23)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E5%B0%8F%E5%BF%83%E8%A9%90%E9%A8%99" dir="ltr">
+			小心詐騙
+			</a>
+			<span dir="ltr">(8)</span>
+
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E6%88%91%E6%84%9B%E5%8F%B0%E7%81%A3" dir="ltr">
+			我愛台灣
+			</a>
+			<span dir="ltr">(7)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E6%89%93%E7%99%BC%E6%99%82%E9%96%93%E7%9A%84%E5%B0%8F%E9%81%8A%E6%88%B2" dir="ltr">
+			打發時間的小遊戲
+			</a>
+			<span dir="ltr">(1)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E6%89%93%E9%9B%BB%E8%A9%B1" dir="ltr">
+
+			打電話
+			</a>
+			<span dir="ltr">(11)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E6%95%A3%E7%9A%84" dir="ltr">
+			散的
+			</a>
+			<span dir="ltr">(37)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E6%97%85%E9%81%8A" dir="ltr">
+			旅遊
+			</a>
+			<span dir="ltr">(28)</span>
+
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E6%9C%89%E8%B6%A3%E7%9A%84%E4%BA%8B" dir="ltr">
+			有趣的事
+			</a>
+			<span dir="ltr">(9)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E6%9D%B1%E4%BA%AC%E4%B9%8B%E6%97%85" dir="ltr">
+			東京之旅
+			</a>
+			<span dir="ltr">(13)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E6%B4%97%E7%85%A7%E7%89%87" dir="ltr">
+
+			洗照片
+			</a>
+			<span dir="ltr">(3)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E6%BB%91%E9%9B%AA" dir="ltr">
+			滑雪
+			</a>
+			<span dir="ltr">(2)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%9C%8B%E5%88%B0%E6%9C%89%E8%B6%A3%E7%9A%84%E4%BA%8B" dir="ltr">
+			看到有趣的事
+			</a>
+			<span dir="ltr">(2)</span>
+
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%9C%8B%E6%A3%92%E7%90%83" dir="ltr">
+			看棒球
+			</a>
+			<span dir="ltr">(46)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%9C%8B%E8%A1%A8%E6%BC%94" dir="ltr">
+			看表演
+			</a>
+			<span dir="ltr">(4)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%9C%8B%E9%86%AB%E7%94%9F" dir="ltr">
+
+			看醫生
+			</a>
+			<span dir="ltr">(6)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%9C%8B%E9%9B%BB%E5%BD%B1" dir="ltr">
+			看電影
+			</a>
+			<span dir="ltr">(18)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%9C%8B%E9%9B%BB%E8%A6%96" dir="ltr">
+			看電視
+			</a>
+			<span dir="ltr">(6)</span>
+
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%9F%AD%E7%9A%84" dir="ltr">
+			短的
+			</a>
+			<span dir="ltr">(32)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%AD%86%E9%9B%BB" dir="ltr">
+			筆電
+			</a>
+			<span dir="ltr">(4)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%B4%90%E7%B4%84%E8%A1%8C" dir="ltr">
+
+			紐約行
+			</a>
+			<span dir="ltr">(7)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%B5%A6%E5%A6%B3%E7%9A%84%E6%AD%8C" dir="ltr">
+			給妳的歌
+			</a>
+			<span dir="ltr">(4)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E7%B6%B2%E8%B7%AF" dir="ltr">
+			網路
+			</a>
+			<span dir="ltr">(1)</span>
+
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E8%AA%AA%E7%9A%84%E6%9C%89%E9%81%93%E7%90%86" dir="ltr">
+			說的有道理
+			</a>
+			<span dir="ltr">(23)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E8%B2%B7%E6%9D%B1%E8%A5%BF" dir="ltr">
+			買東西
+			</a>
+			<span dir="ltr">(19)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E8%B6%85%E7%B4%9A%E6%A3%92%E9%83%A8%E8%90%BD%E6%A0%BC" dir="ltr">
+
+			超級棒部落格
+			</a>
+			<span dir="ltr">(11)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E8%BB%8A%E8%BB%8A" dir="ltr">
+			車車
+			</a>
+			<span dir="ltr">(37)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E9%83%B5%E5%B1%80" dir="ltr">
+			郵局
+			</a>
+			<span dir="ltr">(6)</span>
+
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E9%9D%9E%E5%B8%B8%E9%87%8D%E8%A6%81%E7%9A%84%E4%BA%8B" dir="ltr">
+			非常重要的事
+			</a>
+			<span dir="ltr">(3)</span>
+			</li>
+			<li>
+			<a href="http://lvchen.blogspot.com/search/label/%E9%A4%90%E5%BB%B3" dir="ltr">
+			餐廳
+			</a>
+			<span dir="ltr">(5)</span>
+			</li>
+		</ul>
+<div class="clear"></div>
+
+			</div>
+			</div>
+		</div>
+		<div id="previewCode"><textarea rows="20" cols="40" readonly onfocus="this.select();"></textarea></div>
+		<div id="addToBlog" style="display: inline;">
+			<form id="widgetForm" method="post" action="http://www.blogger.com/add-widget" style="display: inline;">
+			<input name="widget.title" value="" type="hidden">
+			<input name="widget.content" value="&lt;a href='http://buzz.blogger.com/'&gt;Read the Latest Blogger News!&lt;/a&gt;" type="hidden">
+		    <textarea rows="10" cols="10" id="mywidget_content" style="display: none;" name="widget.content">			</textarea>
+			<input name="widget.template" value="&lt;data:content/&gt;" type="hidden">
+			<input name="infoUrl" value="http://lvchen.blogspot.com/2007/08/for-blogger-15.html" type="hidden">
+			<input name="logoUrl" value="http://www.blogger.com/img/icon_logo32.gif" type="hidden">
+			<input name="go" onclick="saveValue();" src="http://www.blogger.com/img/add/add2blogger_lg.gif" type="image">
+			</form>
+		</div>
+		<div style="display: inline; margin-left: 30px;"><button id="codeButton" style="position: relative; display: inline;" onsubmit="return false" onclick="toggleShowCode();">顯示程式碼</button></div>
+	</div>
+</div>	
+</div>
+	<script type="text/javascript">
+		// This is how I control title TABs
+		var whichTable = 1;
+		var tempListForRecovery = jQuery('#Label1 .widget-content').html();
+		jQuery('#titleText span').bind('click',function(){
+			if (jQuery('#postsList').length)
+				jQuery(this).parent().find('.titleDown').removeClass().addClass('titleUp');});
+		jQuery('#titleText span').click(function(){
+			if (jQuery('#postsList').length){
+				jQuery(this).removeClass().addClass('titleDown');
+				for (var i = 1 ; i<= 3 ; i++) // I have three tables, so i <=3
+				{
+					if (jQuery(this).is(':nth-child('+i+')'))
+						break
+				}
+				jQuery('#table'+whichTable).hide();
+				jQuery('#table'+i).show();
+				whichTable = i;
+			}
+		});	
+		$(document).ready(function () {
+			jQuery('button:eq(0)').attr('disabled','');
+			setTimeout("jQuery('center:last').parent().remove();",500); //remove hostse.com AD
+			colorBar();
+		});
+
+	</script>
+	
+</body></html>

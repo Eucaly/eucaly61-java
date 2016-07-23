@@ -1,0 +1,261 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-tw">
+<head><meta content="text/html;charset=UTF-8" http-equiv="Content-Type">
+  	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+	<script type="text/javascript" src="rc20_pack.js"></script>
+	<script type="text/javascript" src="install_pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="rcStyle.css"></link>
+	<title>LVCHEN - Blogger 加強型最新回應 2.0</title><meta content="LVCHEN" name="author"><meta content="An installation page for blogger advanced Recent Comment 2.0" name="description">
+<!-- Beginning of StatCounter Code -->
+<script type="text/javascript">
+sc_project=2853597; 
+sc_invisible=1; 
+sc_partition=29; 
+sc_security="206ff9a3"; 
+</script>
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="website statistics"
+href="http://www.statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c30.statcounter.com/2853597/0/206ff9a3/1/"
+alt="website statistics" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!-- Beginning of Google Analytics Code -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1471580-5");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<!-- End of Analytics Code -->
+</head>
+<body>
+
+<div id="outer">
+	<div class="Title" align="center">
+	<h1>Blogger 加強型最新回應 2.0</h1>
+	<p style="color:blue"><a href="http://lvchen.blogspot.com" target="_blank">LVCHEN</a> 熱情製作 - 6/1/2009</p>
+	</div>
+<div id ="outer2">
+	<div id="main">
+	<div id = "titleText"><span class="titleDown">基本設定</span><span class="titleUp">修改版面</span><span class="titleUp">樣式微調</span></div>
+		<div id="mainText">
+			<form id="widgetMaking" name="makeWidget" method="get" onsubmit="return false">
+			<table id="table1" name="table1">
+			<tbody>
+			<tr>
+				<td class="tableleft">部落格網址：</td>
+				<td class="tableright"><input style="width:180px;" name="blogDomain" type="text" value="" /></td>
+				<td><input name="retriveData" type="button" value="取得預覽" onclick="previewEasy(0);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">每頁留言數：</td>
+				<td class="tableright"><input style="width:24px;" name="postNum" type="text" value="7" onchange="previewEasy(1);"></td>
+			</tr>
+			<tr>
+				<td class="tableleft">快取大小：</td>
+				<td class="tableright"><input style="width:24px;" name="loopNum" type="text" value="60" onchange="previewEasy();" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">是否安裝 jQuery：</td>
+				<td class="tableright"><input name="withjQuery" type="checkbox" onclick="previewEasy();" value="" checked /></td>
+			</tr>
+			</tbody>
+			</table>
+			
+			<table id = "table2" name = "table2" style = "display:none">
+			<tbody>
+			<tr>
+				<td class="tableleft">基本留言樣式：</td>
+				<td class="tableright">
+				<select id="preSet" onchange="previewEasy(2);">
+					<option value ="0" selected="selected">預設格式</option>
+					<option value ="1">無名格式</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">我喜歡跳頁按鈕：</td>
+				<td class="tableright">
+				<input name="useJump" type="checkbox" value="" onclick="disableInput('jumpMsgT',this.checked);disableInput('jumpMsgB',this.checked);focusText('jumpMsgT',this.checked);previewEasy(3);" checked />
+				<input style="width:70px; margin:0 2em 0 0" name="jumpMsgT" type="text" value="跳至留言" onchange="previewEasy(4);" />
+				<button style="width:50px;" name="jumpMsgB" onclick="buttonText();">我跳</button>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">找不到對應文章時：</td>
+				<td class="tableright">顯示留言&nbsp;<input name="shownoTitle" type="checkbox" value="" onclick="disableInput('noTitleMsg',this.checked);focusText('noTitleMsg',this.checked);previewEasy();" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">找不到標題時顯示：</td>
+				<td class="tableright"><input style="width:180px;" name="noTitleMsg" type="text" value="原文已被刪除" onchange="previewEasy();" disabled />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">該頁無留言時顯示：</td>
+				<td class="tableright"><input style="width:180px;" name="nothing" type="text" value="<p>沒有留言可以顯示</p>" onchange="previewEasy();" />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">全部顯示按鈕文字：</td>
+				<td class="tableright"><input style="width:180px;" name="openAllMsg" type="text" value="全部展開" onchange="previewEasy(6);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">全部隱藏按鈕文字：</td>
+				<td class="tableright"><input style="width:180px;" name="hideAllMsg" type="text" value="全部隱藏" onchange="previewEasy(7);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">留言收合時訊息：</td>
+				<td class="tableright"><input style="width:180px;" name="openMsg" type="text" value="留了言" onchange="previewEasy(8);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">展開留言用圖片：</td>
+				<td class="tableright"><input style="width:180px;" name="openImg" type="text" value="rc_0609_f.gif" onchange="previewEasy(9);" /></td>
+			</tr>	
+			<tr>
+				<td class="tableleft">留言展開時訊息：</td>
+				<td class="tableright"><input style="width:180px;" name="closeMsg" type="text" value="留言說:" onchange="previewEasy(10);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">收合留言用圖片：</td>
+				<td class="tableright"><input style="width:180px;" name="closeImg" type="text" value="rc_0609_uf.gif" onchange="previewEasy(11);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">載入中圖片與文字：</td>
+				<td class="tableright"><input style="width:180px;" name="loadingMsg" type="text" value="&lt;img src=&quot;2-0.gif&quot;/&gt;&amp;nbsp;載入中..." onchange="previewEasy(12);" />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">直接去留言圖片：</td>
+				<td class="tableright"><input style="width:180px;" name="goPostImg" type="text" value="external.png" onchange="previewEasy(13);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">直接去留言訊息：</td>
+				<td class="tableright"><input style="width:180px;" name="goPostMsg" type="text" value="直接去留言" onchange="previewEasy(14);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">上下頁按鈕文字：</td>
+				<td class="tableright"><input style="width:180px;" name="prevPage" type="text" value="上一頁" onchange="previewEasy(15);" />
+				<input style="width:180px;" name="nextPage" type="text" value="下一頁" onchange="previewEasy(16);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft" >頁尾資訊文字：</td>
+				<td class="tableright"><input style="width:180px;" name="footerMsg" type="text" value="您正在看留言 %range%，共有 %totalNum% 則留言" onchange="previewEasy(17);" /></td>
+			</tr>	
+			<tr>
+				<td class="tableleft">時間格式：</td>
+				<td class="tableright"> 
+				<select id="dateFormat" onchange="previewEasy(18);">
+					<option value ="0">不要顯示日期</option>
+					<option value ="1" selected="selected">2008-01-01</option>
+					<option value ="2">Jan 01</option>
+				</select>
+				</td>
+			</tr>	
+			<tr>
+				<td class="tableleft">留言者格式：</td>
+				<td class="tableright"><input style="width:180px;" name="customAuthor" type="text" value="&lt;a href=&quot;%link%&quot; title=&quot;%timestamp% &amp;#65306; %short_content%&quot;&gt;%author%&lt;/a&gt;" onchange="previewEasy(19);" /></td>
+			</tr>	
+			<tr>
+				<td class="tableleft">標題格式：</td>
+				<td class="tableright"><input style="width:180px;" name="customTitle" type="text" value="&lt;a href=&quot;%orgLink%&quot;&gt;%g_szTitle%&lt;/a&gt;" onchange="previewEasy(20);" /></td>
+			</tr>		
+			<tr>
+				<td class="tableleft">留言格式：</td>
+				<td class="tableright"><input style="width:180px;" name="customComment" type="text" value="%rcAuthorLinkFormat% 於 %rcTitleLinkFormat% %replyImg% %rcSay% &#12300;%content%&#12301; &amp;nbsp;- %timestamp%" onchange="previewEasy(21);" />	
+				</td>
+			</tr>
+			</tbody>
+			</table>
+			
+			<table id = "table3" name = "table3" style = "display:none">
+			<tbody>
+			<tr>
+				<td class="tableleft">啟用 CSS 設定：</td>
+				<td class="tableright"><input name="startCSS" type="checkbox" onclick="previewEasy(22);" disabled />
+				（實驗中...）</td>
+			</tr>
+			<tr>
+				<td class="tableleft">開關突出：</td>
+				<td class="tableright"><input name="CSS_switch" type="checkbox" onclick="previewEasy(23);" disabled />
+				<input name="CSS_switch_length" style="width:60px" type="text" value="-1em" onchange="previewEasy(23);"/></td>
+			</tr>
+			<tr>
+				<td class="tableleft">留言連結：</td>
+				<td class="tableright">
+					<span style="width:4em">高亮</span><input name="CSS_link_highlight" type="checkbox" onclick="previewEasy(24);" disabled />
+					<input name="CSS_link_highlight_colorcode" style="width:60px" type="text" value="yellow"/><br/>
+					<span style="width:4em">去底線</span><input name="CSS_link_noline" type="checkbox" onclick="previewEasy(25);" disabled />
+					<br/>
+				
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">上下頁按鈕高亮：</td>
+				<td class="tableright">
+					<input name="CSS_page_highlight" type="checkbox" onclick="previewEasy(26);" disabled />
+					<input name="CSS_page_highlight_colorcode" style="width:60px" type="text" value="yellow"/>
+				</td>
+			</tr>
+				<td class="tableleft">頁尾資訊靠右：</td>
+				<td class="tableright"><input name="CSS_page_right" type="checkbox" onclick="previewEasy(27);" disabled /></td>
+			</tr>
+			</tbody>
+			</table>
+			</form>
+		</div>
+	</div>
+	<div id = "sidebar">
+		<div id="previewEasy">
+			<div class="widget-content"></div>
+		</div>
+		<div id="previewCode"><textarea readonly="true" style="width:300px;height:330px" onfocus="this.select();"></textarea></div>
+		<div id="addToBlog" style="display:inline">
+			<form align="center" id="widgetForm" method="POST" action="http://www.blogger.com/add-widget" style="display:inline">
+			<input type="hidden" name="widget.title" value=""/>
+			<input type="hidden" name="widget.content" value="&lt;a href='http://buzz.blogger.com/'&gt;Read the Latest Blogger News!&lt;/a&gt;"/>
+		    <textarea id="mywidget_content" style="display:none;" name="widget.content">
+			</textarea>
+			<input type="hidden" name="widget.template" value="&lt;data:content/&gt;" />
+			<input type="hidden" name="infoUrl" value="http://lvchen.blogspot.com/2007/08/for-blogger-15.html"/>
+			<input type="hidden" name="logoUrl" value="http://www.blogger.com/img/icon_logo32.gif"/>
+			<input type="image" name="go" onclick="saveValue();" src="http://www.blogger.com/img/add/add2blogger_lg.gif"/>
+			</form>
+		</div>
+		<div style="display:inline;margin-left:30px"><button id="codeButton" style="position:relative;display:inline" onsubmit="return false" onclick="toggleShowCode();">顯示程式碼</button></div>
+	</div>
+</div>	
+</div>
+
+	<script type="text/javascript">
+		//jQuery('#container').css('width','850px');
+		// This is how I control title TABs
+		jQuery('#titleText span').bind('click',function(){
+			if (jQuery('#divrc').is(':only-child '))
+				jQuery(this).parent().find('.titleDown').removeClass().addClass('titleUp');});
+		jQuery('#titleText span').click(function(){
+			if (jQuery('#divrc').is(':only-child ')){
+				jQuery(this).removeClass().addClass('titleDown');
+				for (var i = 1 ; i<= 3 ; i++) // I have three tables, so i <=3
+				{
+					if (jQuery(this).is(':nth-child('+i+')'))
+						break
+				}
+				if (i != 4)	{
+					jQuery('table').hide();
+					jQuery('#table'+i).show();
+				}
+			}
+		});
+	jQuery(document).ready(function () {
+			setTimeout("jQuery('center:last').parent().remove();",500); //remove hostse.com AD
+	});
+
+	</script>
+	
+</body>
+</html>

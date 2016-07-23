@@ -1,0 +1,143 @@
+﻿#mainwrapper {
+	width  : 750px;
+	border : 1px dotted;
+	display: block;
+	margin:auto;
+}
+
+#left {
+	width       : 80px;
+	border      : 1px dotted;
+	margin      : 5px;
+	padding     : 5px;
+	float       : left;
+	word-wrap   : break-word; /* fix for long text breaking sidebar float in IE */
+    overflow    : hidden;     /* fix for long non-text content breaking IE sidebar float */
+}
+
+#right {
+	width       : 620px;
+	border      : 1px dotted;
+	margin      : 5px;
+	padding     : 5px;
+	float       : right;
+	text-align  : left;
+	word-wrap   : break-word; /* fix for long text breaking sidebar float in IE */
+    overflow    : hidden;     /* fix for long non-text content breaking IE sidebar float */
+}
+	
+.formatItems {
+	position  : relative;
+	text-align: center;
+	border    : 1px solid #000099;
+	background: #d3e3f9;
+	color     : darkblue;
+	width     : 50px;
+	height	  : auto;
+	margin    : 5px;
+	padding   : 5px;
+	display   : block;
+}
+
+.imgformatItems {
+	position  :relative;
+	background: #d3e3f9;
+	text-align: center;
+	border: 1px solid #000099;
+	width: 50px;
+	height: auto;
+	margin:  5px;
+	padding: 9px 5px 9px 5px;
+	display: block;
+	}
+	
+.formatItemsP {
+	position  :relative;
+	text-align: center;
+	border: 1px solid #000099;
+	background: #d3e3f9;
+	color: darkblue;
+	width: 50px;
+	height: 20px;
+	margin:  6px;
+	margin-top: 5px;
+	padding: 5px;
+	
+}			
+	
+.imgformatItemsP {
+	position  :relative;
+	background: #d3e3f9;
+	text-align: center;
+	border: 1px solid #000099;
+	height: 20px;
+	width: 50px;
+	margin:  4px;
+	padding: 5px;
+	}
+
+	
+#previewEasy{
+	text-align: left;
+	width     : auto;
+	margin	  : auto;
+	padding   : auto;
+	display   : none;
+	}
+	
+#previewFull{
+	text-align: left;
+	width     : 580px;
+	border    : 10px blue groove; 
+	margin	  : 10px;
+	padding   : 5px;
+	}
+	
+#makingBox {
+	text-align: left;
+	width     : 580px;
+	height    : 40px;
+	border    : 1px blue dotted; 
+	margin	  : auto;
+	padding   : 10px;
+}
+	
+.makingBox  {
+	position:relative;
+	/*margin: 3px;
+	padding: 1px;
+	border:1px solid;*/
+}
+	
+hr {
+	width: 100%;
+}
+	
+	
+
+#greylyr {
+	position:absolute;
+	width:122px;
+	border:1px solid #000099;
+	background:#eeeeee;
+	overflow:hidden;
+	visibility:hidden;
+}
+
+#ingreylyr {
+  padding:3px;
+}
+
+#bluelyr {
+  position:absolute;
+  visibility:hidden;
+  left:0px;
+  top:2000px;
+  width:460px;
+  padding:20px;
+  border:1px solid #000099;
+  background:#d3e3f9;
+  layer-background-color:#d3e3f9;
+  visibility:hidden;
+}
+

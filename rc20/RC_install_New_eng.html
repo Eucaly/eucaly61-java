@@ -1,0 +1,264 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh-tw">
+<head><meta content="text/html;charset=UTF-8" http-equiv="Content-Type">
+  	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+	<script type="text/javascript" src="rc20_pack.js"></script>
+	<script type="text/javascript" src="install_eng_pack.js"></script>
+	<link rel="stylesheet" type="text/css" href="rcStyle.css"></link>
+	<title>LVCHEN - Blogger Recent Comment 2.0</title><meta content="LVCHEN" name="author"><meta content="An installation page for blogger advanced Recent Comments 2.0" name="description">
+<!-- Beginning of StatCounter Code -->
+<script type="text/javascript">
+sc_project=2853597; 
+sc_invisible=1; 
+sc_partition=29; 
+sc_security="206ff9a3"; 
+</script>
+<script type="text/javascript"
+src="http://www.statcounter.com/counter/counter.js"></script><noscript><div
+class="statcounter"><a title="website statistics"
+href="http://www.statcounter.com/" target="_blank"><img
+class="statcounter"
+src="http://c30.statcounter.com/2853597/0/206ff9a3/1/"
+alt="website statistics" ></a></div></noscript>
+<!-- End of StatCounter Code -->
+<!-- Beginning of Google Analytics Code -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1471580-5");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<!-- End of Analytics Code -->
+</head>
+<body>
+<div id="outer">
+	<div class="Title" align="center">
+	<h1>Blogger Advanced Recent Comments 2.0</h1>
+	<p style="color:blue">Programed by <a href="http://lvchen.blogspot.com" target="_blank">LVCHEN</a> - 6/1/2009</p>
+	</div>
+<div id ="outer2">
+	<div id="main">
+	<div id = "titleText"><span class="titleDown">Blog Settings</span><span class="titleUp">Modify Appearance</span><span class="titleUp">CSS Tune up</span></div>
+		<div id="mainText">
+			<form id="widgetMaking" name="makeWidget" method="get" onsubmit="return false">
+			<table id="table1" name="table1">
+			<tbody>
+			<tr>
+				<td class="tableleft">Blog URL:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="blogDomain" type="text" value="" /></td>
+				<td><input name="retriveData" type="button" value="Preview" onclick="previewEasy(0);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Messages per Page:&nbsp;</td>
+				<td class="tableright"><input style="width:24px;" name="postNum" type="text" value="7" onchange="previewEasy(1);"></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Cache Size:&nbsp;</td>
+				<td class="tableright"><input style="width:24px;" name="loopNum" type="text" value="60" onchange="previewEasy();" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Install jQuery:&nbsp;</td>
+				<td class="tableright"><input name="withjQuery" type="checkbox" onclick="previewEasy();" value="" checked /><br><span>(A necessary JS library to run this widget)</span></td>
+			</tr>
+			<tr>
+				<td class="tableleft">DIV wrapping:&nbsp;</td>
+				<td class="tableright"><input name="divWrap" type="checkbox" onclick="previewEasy();" value="" /><br><span>(Wrap with 'widget-content' class if your template do not have it)</span></td>
+			</tr>
+			</tbody>
+			</table>
+			
+			<table id = "table2" name = "table2" style = "display:none">
+			<tbody>
+			<tr>
+				<td class="tableleft">Presetting:&nbsp;</td>
+				<td class="tableright">
+				<select id="preSet" onchange="previewEasy(2);">
+					<option value ="0" selected="selected">Default</option>
+					<option value ="1">Wretch</option>
+				</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">Jump Button:&nbsp;</td>
+				<td class="tableright">
+				<input name="useJump" type="checkbox" value="" onclick="disableInput('jumpMsgT',this.checked);disableInput('jumpMsgB',this.checked);focusText('jumpMsgT',this.checked);previewEasy(3);" checked />
+				<input style="width:70px; margin:0 2em 0 0" name="jumpMsgT" type="text" value="Go To #" onchange="previewEasy(4);" />
+				<button style="width:50px;" name="jumpMsgB" onclick="buttonText();">Go</button>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">Got Missing Titles:&nbsp;</td>
+				<td class="tableright">I Wanna Show them&nbsp;<input name="shownoTitle" type="checkbox" value="" onclick="disableInput('noTitleMsg',this.checked);focusText('noTitleMsg',this.checked);previewEasy();" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Prompt Message:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="noTitleMsg" type="text" value="Page Not Found" onchange="previewEasy();" disabled />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">When Nothing to Show:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="nothing" type="text" value="<p>No comment!</p>" onchange="previewEasy();" />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">Show All Button:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="openAllMsg" type="text" value="Show All" onchange="previewEasy(6);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Hide All Buttob:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="hideAllMsg" type="text" value="Hide All" onchange="previewEasy(7);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Prompt When Fold:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="openMsg" type="text" value="left a message" onchange="previewEasy(8);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Image to unfold:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="openImg" type="text" value="rc_0609_f.gif" onchange="previewEasy(9);" /></td>
+			</tr>	
+			<tr>
+				<td class="tableleft">Promote When Fold:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="closeMsg" type="text" value="Wrote:" onchange="previewEasy(10);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Image to fold:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="closeImg" type="text" value="rc_0609_uf.gif" onchange="previewEasy(11);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Loading Message:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="loadingMsg" type="text" value="&lt;img src=&quot;2-0.gif&quot;/&gt;&amp;nbsp;Loading..." onchange="previewEasy(12);" />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">Image for link of Comment Page:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="goPostImg" type="text" value="external.png" onchange="previewEasy(13);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Text for link of Comment Page:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="goPostMsg" type="text" value="Say Something" onchange="previewEasy(14);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Next and Previous Buttons:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="prevPage" type="text" value="Previous" onchange="previewEasy(15);" />
+				<input style="width:180px;" name="nextPage" type="text" value="Next" onchange="previewEasy(16);" /></td>
+			</tr>
+			<tr>
+				<td class="tableleft" >Footer Message:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="footerMsg" type="text" value="Message # %range%. There are %totalNum% messages." onchange="previewEasy(17);" /></td>
+			</tr>	
+			<tr>
+				<td class="tableleft">Date Format:&nbsp;</td>
+				<td class="tableright"> 
+				<select id="dateFormat" onchange="previewEasy(18);">
+					<option value ="0">No Date</option>
+					<option value ="1" selected="selected">2008-01-01</option>
+					<option value ="2">Jan 01</option>
+				</select>
+				</td>
+			</tr>	
+			<tr>
+				<td class="tableleft">Author Format:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="customAuthor" type="text" value="&lt;a href=&quot;%link%&quot; title=&quot;%timestamp% &amp;#65306; %short_content%&quot;&gt;%author%&lt;/a&gt;" onchange="previewEasy(19);" /></td>
+			</tr>	
+			<tr>
+				<td class="tableleft">Title Format:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="customTitle" type="text" value="&lt;a href=&quot;%orgLink%&quot;&gt;%g_szTitle%&lt;/a&gt;" onchange="previewEasy(20);" /></td>
+			</tr>		
+			<tr>
+				<td class="tableleft">Full Comment Format:&nbsp;</td>
+				<td class="tableright"><input style="width:180px;" name="customComment" type="text" value="On %rcTitleLinkFormat%%replyImg%, %rcAuthorLinkFormat% %rcSay% &#12300;%content%&#12301; - %timestamp%" onchange="previewEasy(21);" />	
+				</td>
+			</tr>
+			</tbody>
+			</table>
+			
+			<table id = "table3" name = "table3" style = "display:none">
+			<tbody>
+			<tr>
+				<td class="tableleft">Get CSS Tune:&nbsp;</td>
+				<td class="tableright"><input name="startCSS" type="checkbox" onclick="previewEasy(22);" disabled />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">Indent:&nbsp;</td>
+				<td class="tableright"><input name="CSS_switch" type="checkbox" onclick="previewEasy(23);" disabled />
+				<input name="CSS_switch_length" style="width:60px" type="text" value="-1em" onchange="previewEasy(23);"/></td>
+			</tr>
+			<tr>
+				<td class="tableleft">Comment Links:&nbsp;</td>
+				<td class="tableright">
+					<span style="width:4em">Highlight</span><input name="CSS_link_highlight" type="checkbox" onclick="previewEasy(24);" disabled />
+					<input name="CSS_link_highlight_colorcode" style="width:60px" type="text" value="yellow"/><br/>
+					<span style="width:4em">No Underline</span><input name="CSS_link_noline" type="checkbox" onclick="previewEasy(25);" disabled />
+					<br/>
+				
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">Highlight Prev&Next Buttons:&nbsp;</td>
+				<td class="tableright">
+					<input name="CSS_page_highlight" type="checkbox" onclick="previewEasy(26);" disabled />
+					<input name="CSS_page_highlight_colorcode" style="width:60px" type="text" value="yellow"/>
+				</td>
+			</tr>
+				<td class="tableleft">Footer Align Right:&nbsp;</td>
+				<td class="tableright"><input name="CSS_page_right" type="checkbox" onclick="previewEasy(27);" disabled /></td>
+			</tr>
+			</tbody>
+			</table>
+			</form>
+		</div>
+	</div>
+	<div id = "sidebar">
+		<div id="previewEasy">
+			<div class="widget-content"></div>
+		</div>
+		<div id="previewCode"><textarea readonly="true" onfocus="this.select();"></textarea></div>
+		<div id="addToBlog" style="display:inline">
+			<form align="center" id="widgetForm" method="POST" action="http://www.blogger.com/add-widget" style="display:inline">
+			<input type="hidden" name="widget.title" value=""/>
+			<input type="hidden" name="widget.content" value="&lt;a href='http://buzz.blogger.com/'&gt;Read the Latest Blogger News!&lt;/a&gt;"/>
+		    <textarea id="mywidget_content" style="display:none;" name="widget.content">
+			</textarea>
+			<input type="hidden" name="widget.template" value="&lt;data:content/&gt;" />
+			<input type="hidden" name="infoUrl" value="http://lvchen.blogspot.com/2007/08/for-blogger-15.html"/>
+			<input type="hidden" name="logoUrl" value="http://www.blogger.com/img/icon_logo32.gif"/>
+			<input type="image" name="go" onclick="saveValue();" src="http://www.blogger.com/img/add/add2blogger_lg.gif"/>
+			</form>
+		</div>
+		<div style="display:inline;margin-left:30px"><button id="codeButton" style="position:relative;display:inline" onsubmit="return false" onclick="toggleShowCode();">Display Code</button></div>
+	</div>
+</div>	
+</div>
+
+	<script type="text/javascript">
+		//jQuery('#container').css('width','850px');
+		// This is how I control title TABs
+		jQuery('#titleText span').bind('click',function(){
+			if (jQuery('#divrc').is(':only-child '))
+				jQuery(this).parent().find('.titleDown').removeClass().addClass('titleUp');});
+		jQuery('#titleText span').click(function(){
+			if (jQuery('#divrc').is(':only-child ')){
+				jQuery(this).removeClass().addClass('titleDown');
+				for (var i = 1 ; i<= 3 ; i++) // I have three tables, so i <=3
+				{
+					if (jQuery(this).is(':nth-child('+i+')'))
+						break
+				}
+				if (i != 4)	{
+					jQuery('table').hide();
+					jQuery('#table'+i).show();
+				}
+			}
+		});
+	jQuery(document).ready(function () {
+			setTimeout("jQuery('center:last').parent().remove();",500); //remove hostse.com AD
+	});
+
+	</script>
+	
+</body>
+</html>
